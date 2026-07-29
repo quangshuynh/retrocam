@@ -24,8 +24,12 @@ export default function PreviewStage({
     <section className="stage">
       <div className={`viewport${output.pixelated ? ' is-pixelated' : ''}`}>
         <canvas ref={canvasRef} className="viewport-canvas" />
-        {/* Kept on screen at 2px so mobile browsers keep decoding frames. */}
+        {/* Kept on screen at 2px so mobile browsers keep decoding frames. The key
+            forces a fresh element per source, because an element that has been
+            through createMediaElementSource can never be rebound to a new
+            AudioContext. */}
         <video
+          key={videoUrl}
           ref={videoRef}
           className="source-video"
           src={videoUrl}
