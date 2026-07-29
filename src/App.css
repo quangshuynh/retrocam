@@ -188,10 +188,12 @@
 }
 
 .dropzone-cam {
-  width: clamp(180px, 42vw, 300px);
+  width: clamp(190px, 44vw, 320px);
   height: auto;
+  /* Pixel art, so keep the edges hard when it scales up. */
+  image-rendering: pixelated;
   animation: hover-drift 5s ease-in-out infinite;
-  filter: drop-shadow(0 16px 26px rgba(3, 6, 30, 0.65)) drop-shadow(0 0 34px rgba(0, 211, 245, 0.4));
+  filter: drop-shadow(0 10px 16px rgba(3, 6, 30, 0.6)) drop-shadow(0 0 24px rgba(0, 211, 245, 0.45));
 }
 
 @keyframes hover-drift {
