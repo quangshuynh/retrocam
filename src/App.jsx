@@ -7,6 +7,7 @@ import ExportPanel from './components/ExportPanel'
 import { useRetroProcessor } from './hooks/useRetroProcessor'
 import { getPreset, PRESETS } from './presets'
 import { isRecordingSupported } from './lib/recorder'
+import logo from './assets/logo.png'
 import './App.css'
 
 const DEFAULT_OUTPUT_OPTS = {
@@ -140,10 +141,10 @@ export default function App() {
     <div className="app">
       <header className="masthead">
         <div className="brand">
-          <span className="brand-mark" aria-hidden="true" />
-          <div>
-            <h1>retrocam</h1>
-            <p>Put your video through an old camera.</p>
+          <img className="brand-logo" src={logo} alt="" width="570" height="469" />
+          <div className="brand-text">
+            <h1 className="wordmark">retrocam</h1>
+            <p className="tagline">Put your video through an old camera</p>
           </div>
         </div>
       </header>

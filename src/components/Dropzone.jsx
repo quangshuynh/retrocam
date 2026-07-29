@@ -1,4 +1,5 @@
 import { useRef, useState } from 'react'
+import logo from '../assets/logo.png'
 
 export default function Dropzone({ onFile }) {
   const inputRef = useRef(null)
@@ -24,10 +25,7 @@ export default function Dropzone({ onFile }) {
       }}
     >
       <div className="dropzone-inner">
-        <div className="dropzone-lens" aria-hidden="true">
-          <span className="dropzone-lens-ring" />
-          <span className="dropzone-lens-dot" />
-        </div>
+        <img className="dropzone-cam" src={logo} alt="" width="570" height="469" />
         <h2>Drop a video in</h2>
         <p>MP4, MOV, WebM and anything else your browser can decode. Nothing is uploaded, all of it runs on this device.</p>
         <button type="button" className="button primary" onClick={() => inputRef.current?.click()}>
