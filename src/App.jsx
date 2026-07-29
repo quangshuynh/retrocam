@@ -160,60 +160,55 @@ export default function App() {
           <Dropzone onFile={handleFile} />
         ) : (
           <div className="workspace">
-            <div className="column column-main">
-              <PreviewStage
-                canvasRef={processor.canvasRef}
-                videoRef={processor.videoRef}
-                videoUrl={videoUrl}
-                playing={processor.playing}
-                currentTime={processor.currentTime}
-                duration={meta?.duration || 0}
-                trim={trim}
-                onTrim={updateTrim}
-                onPlay={processor.play}
-                onPause={processor.pause}
-                onSeek={processor.seek}
-                output={output}
-                meta={meta}
-                fileName={file?.name || 'clip'}
-                onReplace={() => {
-                  resetSource()
-                  setVideoUrl(null)
-                  setFile(null)
-                  setSourceMeta(null)
-                }}
-                busy={busy}
-              />
-              <ExportPanel
-                exportState={exportState}
-                onStart={processor.startExport}
-                onCancel={processor.cancelExport}
-                onClear={processor.clearExport}
-                presetId={presetId}
-                fileName={file?.name}
-                trimLength={Math.max(0, trim.end - trim.start)}
-                disabled={!recordingSupported || !meta}
-              />
-            </div>
-
-            <div className="column column-side">
-              <PresetPicker
-                value={presetId}
-                onChange={applyPreset}
-                modified={modified}
-                onReset={() => applyPreset(presetId)}
-              />
-              <ControlPanel
-                look={look}
-                output={output}
-                audio={audio}
-                overlay={overlay}
-                onLook={updateLook}
-                onOutput={updateOutput}
-                onAudio={updateAudio}
-                onOverlay={updateOverlay}
-              />
-            </div>
+            <PreviewStage
+              canvasRef={processor.canvasRef}
+              videoRef={processor.videoRef}
+              videoUrl={videoUrl}
+              playing={processor.playing}
+              currentTime={processor.currentTime}
+              duration={meta?.duration || 0}
+              trim={trim}
+              onTrim={updateTrim}
+              onPlay={processor.play}
+              onPause={processor.pause}
+              onSeek={processor.seek}
+              output={output}
+              meta={meta}
+              fileName={file?.name || 'clip'}
+              onReplace={() => {
+                resetSource()
+                setVideoUrl(null)
+                setFile(null)
+                setSourceMeta(null)
+              }}
+              busy={busy}
+            />
+            <PresetPicker
+              value={presetId}
+              onChange={applyPreset}
+              modified={modified}
+              onReset={() => applyPreset(presetId)}
+            />
+            <ExportPanel
+              exportState={exportState}
+              onStart={processor.startExport}
+              onCancel={processor.cancelExport}
+              onClear={processor.clearExport}
+              presetId={presetId}
+              fileName={file?.name}
+              trimLength={Math.max(0, trim.end - trim.start)}
+              disabled={!recordingSupported || !meta}
+            />
+            <ControlPanel
+              look={look}
+              output={output}
+              audio={audio}
+              overlay={overlay}
+              onLook={updateLook}
+              onOutput={updateOutput}
+              onAudio={updateAudio}
+              onOverlay={updateOverlay}
+            />
           </div>
         )}
       </main>
